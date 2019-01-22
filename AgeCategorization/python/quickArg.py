@@ -9,7 +9,14 @@ def quickArg(argv):
         opts, args = getopt.getopt(argv,"hi:o:d:m:y:c:",["ifile=","ofile="])
     except getopt.GetoptError:
         print(sys.argv[0] + " -i <inputfile> -o <outputfile> -d <day> -m <month> -y <year> -c <column>")
-        print("\nYOU MUST SPECIFY A COLUMN IN THE DATA FRAME STARTING AT 0 AND MOVING RIGHT\n")
+        print(sys.argv[0] + " -i <inputfile> -o <outputfile>")
+        print("Not all Variables Defined(below are list of variables that need definition)")
+        print("-i\tinput file")
+        print("-o\toutput file")
+        print("-d\tday of election")
+        print("-m\tmonth of election")
+        print("-y\tyear of election")
+        print("-c\tcolumn where date of births are specified in 'year-month-day' order ")
         sys.exit(2)
     for opt, arg in opts:
         if opt == '-h':
@@ -35,21 +42,6 @@ def quickArg(argv):
             emonth = arg
         elif opt in ("-c", "--column"):
             column = arg
-    """try:
-        eday
-        eyear
-        emonth
-        column
-        inputfile
-        outputfile
-    except getopt.GetoptError:
-        print("Not all Variables Defined(below are list of variables that need definition)")
-        print("-i\tinput file")
-        print("-o\toutput file")
-        print("-d\tday of election")
-        print("-m\tmonth of election")
-        print("-y\tyear of election")
-        print("-c\tcolumn where date of births are specified in 'year-month-day' order ")"""
     return [inputfile, outputfile, eyear, emonth, eday, column]
 
 if __name__ == "__main__":

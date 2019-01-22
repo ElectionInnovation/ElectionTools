@@ -41,4 +41,8 @@ if __name__ == "__main__":
     emonth = int(newargs[3])
     eday = int(newargs[4])
     column = int(newargs[5])
+    with open("output.txt", "w") as outputtxt:
+        outputtxt.write(outputfile)
+        outputtxt.write("\n")
+        outputtxt.close()
     ageCategorize(inputfile, outputfile, eyear, emonth, eday, column)
