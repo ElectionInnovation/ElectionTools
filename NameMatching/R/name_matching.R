@@ -34,6 +34,3 @@ matchNames <- function(x, y, z) {
   
 }
 
-lapply(nevada_control$Full.Name, firstName, n=1)
-lapply(nevada_control$Full.Name, lastName, n=3)
-
