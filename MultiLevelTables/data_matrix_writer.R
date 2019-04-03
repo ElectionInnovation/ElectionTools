@@ -3,11 +3,11 @@ writeFirstRow <- function(data, column) {
   marker <- 1
   firstRow <- ""
   while (marker <= skipCols) {
-    firstRow <- append(firstRow, " ,")
+    firstRow <- append(firstRow, '" ",')
     marker <- marker+1
   }
   for (i in levels(data[, column])) {
-    firstRow <- append(firstRow, paste0(i, ','))
+    firstRow <- append(firstRow, paste0('"', i, '"', ','))
   }
   return(paste0(firstRow, collapse = ""))
 }
@@ -32,8 +32,9 @@ writeRows <- function(data, column,row, rows, conn) {
         current_row <- append(current_row, present_value)
         
       }
-      cat(paste0(current_row[2:length(current_row)], collapse = ','), file = conn, sep = "\n", append = T)
-      current_row <- ""
+      cat(paste0('"', current_row[2:length(current_row)], collapse = '",'), file = conn, append = T)
+      cat(paste0('",'), file=conn, sep = "\n", append=T)
+      current_row <- ''
       current_row <- append(current_row, rows)
       
     }
